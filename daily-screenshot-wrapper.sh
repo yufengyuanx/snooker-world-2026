@@ -45,7 +45,7 @@ fi
 echo ""
 echo "4. 发送微信..."
 # 使用微信插件发送，如果失败则本地打开
-if openclaw message send --channel openclaw-weixin --accountId "d37b2e65ca45-im-bot" --media "$IMG_PATH" --message "🏆 斯诺克每日截图 - $(date '+%m-%d %H:%M')
+if openclaw message send --channel openclaw-weixin --account "d37b2e65ca45-im-bot" --target "o9cq80wSi_GdWvGFFwx5cQD_AUIo@im.wechat" --media "$IMG_PATH" --message "🏆 斯诺克每日截图 - $(date '+%m-%d %H:%M')
 
 ✅ 自动抓取 WST 比分
 ✅ 更新比赛数据
