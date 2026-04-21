@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026年世界斯诺克锦标赛</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #111a34;
+      --line: #30446f;
+      --lineStrong: rgba(125,211,252,.5);
+      --lineSoft: rgba(125,211,252,.26);
+      --text: #edf2ff;
+      --muted: #9fb0d6;
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
+      --win: #86efac;
+      --shadow: 0 16px 42px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #102146 0%, var(--bg) 55%);
+    }
+    .page { max-width: 1660px; margin: 0 auto; padding: 18px 14px 28px; }
+    .footer {
+      text-align: center; margin-top: 24px; padding: 16px; color: var(--muted); font-size: 13px;
+      border-top: 1px solid var(--line); opacity: 0.7;
+    }
+    .footer span { margin: 0 12px; }
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(125,211,252,.12), rgba(167,139,250,.12));
+      border: 1px solid rgba(125,211,252,.2);
+      border-radius: 22px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.gc.wstservices.co.uk/fit-in/400x600/62fb7820-1ed9-11f1-9f86-872d5dabf567.jpg') center/cover no-repeat;
+      opacity: 0.5;
+      border-radius: 22px;
+      filter: brightness(1.1);
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 56px;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #fff;
+      font-weight: 400;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .layout { display: block; }
+    .card {
+      background: rgba(17,26,52,.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+    .toolbar { display: block; margin-bottom: 8px; }
+    .toolbar h2 { margin: 0; font-size: 20px; display:none; }
+
+    .bracket-wrap {
+      overflow: auto;
+      padding: 4px 8px 8px 4px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      position: relative;
+    }
+    .bracket-stage { position: relative; min-width: 1400px; }
+    .bracket {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(250px, 1fr));
+      gap: 34px;
+      min-width: 1400px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    .bracket-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible; }
+    .round { display: grid; gap: 16px; position: relative; }
+    .round-title {
+      position: sticky; top: 0; z-index: 2; padding: 14px 20px; text-align: center; border-radius: 14px;
+      border: 1px solid var(--lineStrong); background: linear-gradient(180deg, rgba(21,34,70,.98), rgba(17,26,52,.98)); color: var(--accent); font-weight: 800;
+      box-shadow: 0 8px 20px rgba(0,0,0,.16), inset 0 1px 0 rgba(125,211,252,.15);
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .round-sub { display: block; font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+    .match {
+      position: relative; border: 1px solid var(--line); border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+    .match.live { border-color: rgba(125,211,252,.55); box-shadow: 0 0 0 1px rgba(125,211,252,.18), 0 10px 28px rgba(0,0,0,.18); }
+    .match.finished { border-color: rgba(134,239,172,.28); }
+    .match-meta {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 7px 10px; font-size: 11px; color: var(--muted);
+      border-bottom: 1px solid rgba(170,180,214,.12); background: rgba(255,255,255,.025);
+    }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 6px; border-radius: 999px;
+      padding: 3px 8px; font-size: 11px; font-weight: 700; border: 1px solid rgba(255,255,255,.08); white-space: nowrap;
+    }
+    .status-live { color: var(--accent); border-color: rgba(125,211,252,.35); background: rgba(125,211,252,.08); animation: livePulse 2s ease-in-out infinite; }
+    @keyframes livePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(125,211,252,.4); }
+      50% { box-shadow: 0 0 8px 2px rgba(125,211,252,.2); }
+    }
+    .status-finished { color: var(--win); border-color: rgba(134,239,172,.3); background: rgba(134,239,172,.08); }
+    .status-pending { color: var(--muted); border-color: rgba(170,180,214,.18); background: rgba(255,255,255,.03); }
+    .slot {
+      display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+      padding: 9px 10px; border-bottom: 1px dashed rgba(170,180,214,.12); min-height: 56px;
+    }
+    .slot:last-child { border-bottom: none; }
+    .slot.winner { background: rgba(134,239,172,.08); }
+    .slot.placeholder { color: var(--muted); }
+    .slot.source-pending { background: rgba(255,255,255,.02); border-left: 3px solid rgba(125,211,252,.28); }
+    .slot-left { display: flex; gap: 9px; align-items: center; min-width: 0; text-decoration: none; color: inherit; position: relative; }
+    .avatar {
+      width: 34px; height: 34px; border-radius: 999px; object-fit: cover; object-position: center top;
+      flex: 0 0 auto; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .slot-left:hover .avatar { transform: scale(1.06); border-color: rgba(125,211,252,.55); }
+    .flag { font-size: 18px; line-height: 1; flex: 0 0 auto; }
+    .names { min-width: 0; }
+    .name-en { color: var(--text); font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .slot-left:hover .name-en { color: var(--accent); }
+    .name-zh { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .seed { color: var(--accent2); font-size: 11px; margin-left: 6px; }
+    .score { min-width: 28px; text-align: center; color: var(--win); font-weight: 800; font-size: 16px; }
+    .score-input {
+      width: 42px; text-align: center; color: var(--win); font-weight: 800; font-size: 16px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 8px;
+      padding: 6px 4px; outline: none;
+    }
+    .score-input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(125,211,252,.14); }
+    .slot-left[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute; left: 12px; bottom: calc(100% + 8px); max-width: 220px; white-space: normal;
+      background: rgba(8,17,31,.96); color: #eef2ff; border: 1px solid rgba(125,211,252,.25);
+      border-radius: 10px; padding: 8px 10px; font-size: 12px; line-height: 1.4;
+      box-shadow: 0 12px 28px rgba(0,0,0,.28); z-index: 5; pointer-events: none;
+    }
+    @media print {
+      body { background: #08111f; }
+      .page { max-width: none; padding: 0; }
+      .hero, .card { box-shadow: none; }
+      .bracket-wrap { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>2026年世界斯诺克锦标赛</h1>
+    </section>
+
+    <div class="layout">
+      <section class="card">
+        <div class="toolbar"><h2>比赛对阵图</h2></div>
+        <div class="bracket-wrap">
+          <div class="bracket-stage" id="bracketStage">
+            <svg class="bracket-svg" id="bracketSvg"></svg>
+            <div id="bracket" class="bracket"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script id="fallback-data" type="application/json">{"tournament":{"nameZh":"2026年世界斯诺克锦标赛","format":"32强 → 16强 → 8强 → 4强 → 决赛"},"rounds":[]}</script>
+  <script id="fallback-profiles" type="application/json">{"players":[]}</script>
+  <script>
+    let PROFILE_MAP = {};
+
+    const normalizePlayer = (player) => {
+      if (!player) return { en: '--', zh: '待定', flag: '', seed: null, score: null, avatar: '' };
+      const base = {
+        en: player.en || '--', zh: player.zh || (player.en ? '' : '待定'), flag: player.flag || '',
+        seed: player.seed ?? null, score: player.score ?? null, avatar: player.avatar || ''
+      };
+      const prof = PROFILE_MAP[base.en];
+      if (prof) {
+        if (!base.avatar && prof.avatar) base.avatar = prof.avatar;
+        if ((!base.flag || base.flag === '🏴') && prof.flag) base.flag = prof.flag;
+      }
+      return base;
+    };
+
+    const advancePlayer = (player) => ({ ...normalizePlayer(player), score: null });
+
+    const inferStatus = (match) => {
+      const players = match.players || [];
+      const vals = players.map(p => typeof p.score === 'number' ? p.score : null);
+      const numeric = vals.filter(v => v !== null);
+      if (numeric.length === 0) return 'pending';
+      if (numeric.length < 2) return 'live';
+      const [a, b] = vals;
+      if (a === b) return 'live';
+      const bestOf = Number(match.bestOf || 0);
+      const winsNeeded = bestOf > 0 ? Math.floor(bestOf / 2) + 1 : null;
+      const maxScore = Math.max(a, b);
+      if (winsNeeded && maxScore >= winsNeeded) return 'finished';
+      return 'live';
+    };
+
+    const winnerOf = (match) => {
+      if (!match || !match.players || match.players.length < 2) return null;
+      const status = match.status || inferStatus(match);
+      if (status !== 'finished') return null;
+      const [a, b] = match.players;
+      const sa = typeof a.score === 'number' ? a.score : null;
+      const sb = typeof b.score === 'number' ? b.score : null;
+      if (sa === null || sb === null || sa === sb) return null;
+      return sa > sb ? a : b;
+    };
+
+    const pendingSourcePlayer = () => ({ en: '--', zh: '待定', flag: '', seed: null, score: null, sourcePending: true, avatar: '' });
+
+    const hydrateRounds = (rounds) => {
+      const cloned = JSON.parse(JSON.stringify(rounds || []));
+      if (!cloned.length) return cloned;
+      cloned[0].matches = cloned[0].matches.map(m => ({ ...m, players: (m.players || []).map(normalizePlayer), status: m.status || inferStatus(m) }));
+      for (let i = 1; i < cloned.length; i++) {
+        const prev = cloned[i - 1].matches || [];
+        const cur = cloned[i].matches || [];
+        cur.forEach((match, idx) => {
+          const leftWinner = winnerOf(prev[idx * 2]);
+          const rightWinner = winnerOf(prev[idx * 2 + 1]);
+          match.players = [leftWinner ? advancePlayer(leftWinner) : pendingSourcePlayer(), rightWinner ? advancePlayer(rightWinner) : pendingSourcePlayer()];
+          match.status = match.status || inferStatus(match);
+        });
+      }
+      return cloned;
+    };
+
+    const render = (data) => {
+      const rounds = hydrateRounds(data.rounds || []);
+      document.getElementById('bracket').innerHTML = rounds.map((round, idx) => `
+        <div class="round" data-round-index="${idx}">
+          <div class="round-title">${round.title}<span class="round-sub">${round.subtitle || ''}</span></div>
+          ${(round.matches || []).map((match, matchIdx) => {
+            const [a, b] = (match.players || [null, null]).map(normalizePlayer);
+            const winner = winnerOf(match);
+            const status = match.status || inferStatus(match);
+            const statusLabel = status === 'live' ? '比赛中' : status === 'finished' ? '已结束' : '未开始';
+            const meta = [match.date, match.bestOf ? `BO${match.bestOf}` : ''].filter(Boolean);
+            const slot = (p, playerIndex) => {
+              const tooltip = [p.en, p.zh].filter(Boolean).join(' · ');
+              const href = PROFILE_MAP[p.en]?.wstProfile || '';
+              const inner = `${p.avatar ? `<img class="avatar" src="${p.avatar}" alt="${p.en}" loading="lazy" />` : ''}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-en">${p.en}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div><div class="name-zh">${p.zh || ''}</div></div>`;
+              const scoreNode = idx === 0
+                ? `<input class="score-input" type="text" inputmode="numeric" value="${typeof p.score === 'number' ? p.score : ''}" data-match-id="${match.id}" data-player-index="${playerIndex}" ${p.en === '--' ? 'disabled' : ''} />`
+                : `<div class="score">${typeof p.score === 'number' ? p.score : '–'}</div>`;
+              return `<div class="slot ${winner && winner.en === p.en ? 'winner' : ''} ${p.en === '--' ? 'placeholder' : ''} ${p.sourcePending ? 'source-pending' : ''}">${href && p.en !== '--' ? `<a class="slot-left" data-tooltip="${tooltip}" href="${href}" target="_blank" rel="noreferrer">${inner}</a>` : `<div class="slot-left" data-tooltip="${tooltip}">${inner}</div>`}${scoreNode}</div>`;
+            };
+            return `<div class="match ${status}" data-round="${idx}" data-match="${matchIdx}"><div class="match-meta"><span>${meta[0] || '待更新'}</span><span style="display:flex; gap:8px; align-items:center;"><span>${meta[1] || ''}</span><span class="status-pill status-${status}">${statusLabel}</span></span></div>${slot(a,0)}${slot(b,1)}</div>`;
+          }).join('')}
+        </div>`).join('');
+      relayoutAndRedraw();
+      bindScoreInputs();
+    };
+
+    const bindScoreInputs = () => {
+      document.querySelectorAll('.score-input').forEach(input => {
+        input.addEventListener('change', async (e) => {
+          const el = e.currentTarget;
+          const matchId = el.dataset.matchId;
+          const playerIndex = Number(el.dataset.playerIndex);
+          const raw = el.value.trim();
+          const score = raw === '' ? '' : Number(raw);
+          try {
+            const res = await fetch('/api/update-score', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ matchId, playerIndex, score })
+            });
+            const json = await res.json();
+            if (!json.ok) throw new Error(json.error || 'save failed');
+            render(json.data);
+          } catch (err) {
+            alert('保存失败：' + (err.message || err));
+          }
+        });
+      });
+    };
+
+    const layoutRounds = () => {
+      const bracket = document.getElementById('bracket');
+      if (!bracket) return;
+      const rounds = Array.from(bracket.querySelectorAll('.round'));
+      const minGap = 18;
+      rounds.forEach((round, idx) => { if (idx !== 0) round.querySelectorAll('.match').forEach(m => m.style.marginTop = '0px'); });
+      for (let r = 1; r < rounds.length; r++) {
+        const prevRound = rounds[r - 1];
+        const round = rounds[r];
+        const prevMatches = Array.from(prevRound.querySelectorAll('.match'));
+        const matches = Array.from(round.querySelectorAll('.match'));
+        const roundRect = round.getBoundingClientRect();
+        const title = round.querySelector('.round-title');
+        let lastBottom = title ? (title.getBoundingClientRect().bottom - roundRect.top + 16) : 0;
+        matches.forEach((match, idx) => {
+          const sourceA = prevMatches[idx * 2], sourceB = prevMatches[idx * 2 + 1];
+          if (!sourceA || !sourceB) return;
+          const a = sourceA.getBoundingClientRect(), b = sourceB.getBoundingClientRect(), m = match.getBoundingClientRect();
+          const targetCenter = ((a.top + a.height / 2) + (b.top + b.height / 2)) / 2;
+          const currentTop = m.top - roundRect.top;
+          let desiredTop = targetCenter - roundRect.top - m.height / 2;
+          if (desiredTop < lastBottom) desiredTop = lastBottom;
+          const delta = desiredTop - currentTop;
+          if (delta > 0) match.style.marginTop = `${delta}px`;
+          const finalTop = currentTop + Math.max(delta, 0);
+          lastBottom = finalTop + m.height + minGap;
+        });
+      }
+    };
+
+    const drawConnections = () => {
+      const stage = document.getElementById('bracketStage');
+      const bracket = document.getElementById('bracket');
+      const svg = document.getElementById('bracketSvg');
+      if (!stage || !bracket || !svg) return;
+      const stageRect = stage.getBoundingClientRect();
+      const rounds = Array.from(bracket.querySelectorAll('.round'));
+      const width = Math.ceil(bracket.scrollWidth), height = Math.ceil(bracket.scrollHeight);
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('width', width); svg.setAttribute('height', height); svg.innerHTML = '';
+      for (let r = 0; r < rounds.length - 1; r++) {
+        const currentMatches = Array.from(rounds[r].querySelectorAll('.match'));
+        const nextMatches = Array.from(rounds[r + 1].querySelectorAll('.match'));
+        nextMatches.forEach((nextMatch, idx) => {
+          const sourceA = currentMatches[idx * 2], sourceB = currentMatches[idx * 2 + 1];
+          if (!sourceA || !sourceB) return;
+          const a = sourceA.getBoundingClientRect(), b = sourceB.getBoundingClientRect(), n = nextMatch.getBoundingClientRect();
+          const x1 = a.right - stageRect.left, y1 = a.top - stageRect.top + a.height / 2;
+          const x2 = b.right - stageRect.left, y2 = b.top - stageRect.top + b.height / 2;
+          const xn = n.left - stageRect.left, yn = n.top - stageRect.top + n.height / 2;
+          const midX = x1 + (xn - x1) * 0.42;
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', `M ${x1} ${y1} L ${midX} ${y1} L ${midX} ${y2} L ${x2} ${y2} M ${midX} ${(y1 + y2) / 2} L ${xn} ${yn}`);
+          path.setAttribute('fill', 'none');
+          path.setAttribute('stroke', r === 0 ? getComputedStyle(document.documentElement).getPropertyValue('--lineStrong') : getComputedStyle(document.documentElement).getPropertyValue('--lineSoft'));
+          path.setAttribute('stroke-width', r === 0 ? '2.5' : '2');
+          path.setAttribute('stroke-linecap', 'round');
+          path.setAttribute('stroke-linejoin', 'round');
+          svg.appendChild(path);
+        });
+      }
+    };
+
+    const relayoutAndRedraw = () => requestAnimationFrame(() => { layoutRounds(); requestAnimationFrame(drawConnections); });
+    window.addEventListener('resize', relayoutAndRedraw);
+
+    Promise.all([
+      fetch('./bracket-data.json').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed'))),
+      fetch('./player-profiles.json').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
+    ]).then(([data, profiles]) => {
+      PROFILE_MAP = Object.fromEntries((profiles.players || []).map(p => [p.en, p]));
+      render(data);
+    }).catch(() => {
+      PROFILE_MAP = Object.fromEntries((JSON.parse(document.getElementById('fallback-profiles').textContent).players || []).map(p => [p.en, p]));
+      render(JSON.parse(document.getElementById('fallback-data').textContent));
+    });
+  </script>
+  <div class="footer">
+    <span>数据来源: World Snooker Tour</span>
+    <span id="updateTime"></span>
+  </div>
+  <script>
+    fetch('./bracket-data.json').then(r => r.json()).then(data => {
+      const time = data.tournament?.lastUpdated || '';
+      if (time) document.getElementById('updateTime').textContent = '最后更新: ' + time;
+    }).catch(() => {});
+  </script>
+</body>
+</html>

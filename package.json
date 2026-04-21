@@ -1,0 +1,12 @@
+{
+  "name": "snooker-wst-scraper",
+  "version": "1.0.0",
+  "description": "WST Match Scraper for World Snooker Championship",
+  "scripts": {
+    "scrape": "node scrape.js"
+  },
+  "dependencies": {
+    "playwright": "^1.59.1",
+    "puppeteer": "^21.0.0"
+  }
+}

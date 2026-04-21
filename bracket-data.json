@@ -1,0 +1,459 @@
+{
+  "tournament": {
+    "name": "2026 Halo World Snooker Championship",
+    "nameZh": "2026 斯诺克世锦赛",
+    "venue": "Crucible Theatre",
+    "location": "Sheffield",
+    "format": "32强 → 16强 → 8强 → 4强 → 决赛",
+    "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
+    "lastUpdated": "2026-04-21 23:54 (Asia/Shanghai)"
+  },
+  "rounds": [
+    {
+      "key": "last32",
+      "title": "32 强",
+      "subtitle": "Last 32",
+      "matches": [
+        {
+          "id": "r32-1",
+          "date": "18 Apr",
+          "bestOf": 19,
+          "status": "finished",
+          "players": [
+            {
+              "en": "Zhao Xintong",
+              "zh": "赵心童",
+              "flag": "🇨🇳",
+              "seed": 1,
+              "score": 10
+            },
+            {
+              "en": "Liam Highfield",
+              "zh": "利亚姆·海菲尔德",
+              "flag": "🇬🇧",
+              "score": 7
+            }
+          ]
+        },
+        {
+          "id": "r32-2",
+          "date": "19–20 Apr",
+          "bestOf": 19,
+          "status": "finished",
+          "players": [
+            {
+              "en": "Ding Junhui",
+              "zh": "丁俊晖",
+              "flag": "🇨🇳",
+              "seed": 16,
+              "score": 10
+            },
+            {
+              "en": "David Gilbert",
+              "zh": "大卫·吉尔伯特",
+              "flag": "🇬🇧",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "r32-3",
+          "date": "18–19 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Xiao Guodong",
+              "zh": "肖国栋",
+              "flag": "🇨🇳",
+              "seed": 9,
+              "score": 10
+            },
+            {
+              "en": "Zhou Yuelong",
+              "zh": "周跃龙",
+              "flag": "🇨🇳",
+              "score": 6
+            }
+          ],
+          "status": "finished"
+        },
+        {
+          "id": "r32-4",
+          "date": "20–21 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Shaun Murphy",
+              "zh": "肖恩·墨菲",
+              "flag": "🇬🇧",
+              "seed": 8,
+              "score": 5
+            },
+            {
+              "en": "Fan Zhengyi",
+              "zh": "范争一",
+              "flag": "🇨🇳",
+              "score": 4
+            }
+          ],
+          "status": "live"
+        },
+        {
+          "id": "r32-5",
+          "date": "19–20 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "John Higgins",
+              "zh": "约翰·希金斯",
+              "flag": "🇬🇧",
+              "seed": 5,
+              "score": 10
+            },
+            {
+              "en": "Ali Carter",
+              "zh": "阿里·卡特",
+              "flag": "🇬🇧",
+              "score": 7
+            }
+          ],
+          "status": "finished"
+        },
+        {
+          "id": "r32-6",
+          "date": "21–22 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Ronnie O'Sullivan",
+              "zh": "罗尼·奥沙利文",
+              "flag": "🇬🇧",
+              "seed": 12,
+              "score": 5
+            },
+            {
+              "en": "He Guoqiang",
+              "zh": "贺国强",
+              "flag": "🇨🇳",
+              "score": 2
+            }
+          ],
+          "status": "live"
+        },
+        {
+          "id": "r32-7",
+          "date": "21–22 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Chris Wakelin",
+              "zh": "克里斯·韦克林",
+              "flag": "🇬🇧",
+              "seed": 13,
+              "score": 5
+            },
+            {
+              "en": "Liam Pullen",
+              "zh": "利亚姆·普伦",
+              "flag": "🇬🇧",
+              "score": 4
+            }
+          ],
+          "status": "live"
+        },
+        {
+          "id": "r32-8",
+          "date": "22–23 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Neil Robertson",
+              "zh": "尼尔·罗伯逊",
+              "flag": "🇦🇺",
+              "seed": 4,
+              "score": null
+            },
+            {
+              "en": "Pang Junxu",
+              "zh": "庞俊旭",
+              "flag": "🇨🇳",
+              "score": null
+            }
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "r32-9",
+          "date": "20 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Kyren Wilson",
+              "zh": "凯伦·威尔逊",
+              "flag": "🇬🇧",
+              "seed": 3,
+              "score": 10
+            },
+            {
+              "en": "Stan Moody",
+              "zh": "斯坦·穆迪",
+              "flag": "🇬🇧",
+              "score": 7
+            }
+          ],
+          "status": "finished"
+        },
+        {
+          "id": "r32-10",
+          "date": "18–19 Apr",
+          "bestOf": 19,
+          "status": "finished",
+          "players": [
+            {
+              "en": "Mark Allen",
+              "zh": "马克·艾伦",
+              "flag": "🇬🇧",
+              "seed": 14,
+              "score": 10
+            },
+            {
+              "en": "Zhang Anda",
+              "zh": "张安达",
+              "flag": "🇨🇳",
+              "score": 6
+            }
+          ]
+        },
+        {
+          "id": "r32-11",
+          "date": "18–19 Apr",
+          "bestOf": 19,
+          "status": "finished",
+          "players": [
+            {
+              "en": "Barry Hawkins",
+              "zh": "巴里·霍金斯",
+              "flag": "🇬🇧",
+              "seed": 11,
+              "score": 10
+            },
+            {
+              "en": "Matthew Stevens",
+              "zh": "马修·史蒂文斯",
+              "flag": "🇬🇧",
+              "score": 4
+            }
+          ]
+        },
+        {
+          "id": "r32-12",
+          "date": "18–19 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Mark Williams",
+              "zh": "马克·威廉姆斯",
+              "flag": "🇬🇧",
+              "seed": 6,
+              "score": 10
+            },
+            {
+              "en": "Antoni Kowalski",
+              "zh": "安东尼·科瓦尔斯基",
+              "flag": "🇵🇱",
+              "score": 4
+            }
+          ],
+          "status": "finished"
+        },
+        {
+          "id": "r32-13",
+          "date": "22 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Mark Selby",
+              "zh": "马克·塞尔比",
+              "flag": "🇬🇧",
+              "seed": 7,
+              "score": null
+            },
+            {
+              "en": "Jak Jones",
+              "zh": "杰克·琼斯",
+              "flag": "🇬🇧",
+              "score": null
+            }
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "r32-14",
+          "date": "20–21 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Wu Yize",
+              "zh": "吴宜泽",
+              "flag": "🇨🇳",
+              "seed": 10,
+              "score": 10
+            },
+            {
+              "en": "Lei Peifan",
+              "zh": "雷佩凡",
+              "flag": "🇨🇳",
+              "score": 2
+            }
+          ],
+          "status": "finished"
+        },
+        {
+          "id": "r32-15",
+          "date": "22–23 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Si Jiahui",
+              "zh": "斯佳辉",
+              "flag": "🇨🇳",
+              "seed": 15,
+              "score": null
+            },
+            {
+              "en": "Hossein Vafaei",
+              "zh": "侯赛因·瓦菲",
+              "flag": "🇮🇷",
+              "score": null
+            }
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "r32-16",
+          "date": "21 Apr",
+          "bestOf": 19,
+          "players": [
+            {
+              "en": "Judd Trump",
+              "zh": "贾德·特鲁姆普",
+              "flag": "🇬🇧",
+              "seed": 2,
+              "score": 5
+            },
+            {
+              "en": "Gary Wilson",
+              "zh": "加里·威尔逊",
+              "flag": "🇬🇧",
+              "score": 4
+            }
+          ],
+          "status": "live"
+        }
+      ]
+    },
+    {
+      "key": "last16",
+      "title": "16 强",
+      "subtitle": "Last 16",
+      "matches": [
+        {
+          "id": "r16-1",
+          "date": "23–26 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-2",
+          "date": "23–24 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-3",
+          "date": "25–27 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-4",
+          "date": "25–27 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-5",
+          "date": "23–25 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-6",
+          "date": "24–25 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-7",
+          "date": "26–27 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "r16-8",
+          "date": "25–27 Apr",
+          "bestOf": 25
+        }
+      ]
+    },
+    {
+      "key": "quarter",
+      "title": "8 强",
+      "subtitle": "Quarter-finals",
+      "matches": [
+        {
+          "id": "qf-1",
+          "date": "28–29 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "qf-2",
+          "date": "28–29 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "qf-3",
+          "date": "28–29 Apr",
+          "bestOf": 25
+        },
+        {
+          "id": "qf-4",
+          "date": "28–29 Apr",
+          "bestOf": 25
+        }
+      ]
+    },
+    {
+      "key": "semi",
+      "title": "4 强",
+      "subtitle": "Semi-finals",
+      "matches": [
+        {
+          "id": "sf-1",
+          "date": "30 Apr – 2 May",
+          "bestOf": 33
+        },
+        {
+          "id": "sf-2",
+          "date": "30 Apr – 2 May",
+          "bestOf": 33
+        }
+      ]
+    },
+    {
+      "key": "final",
+      "title": "决赛",
+      "subtitle": "Final",
+      "matches": [
+        {
+          "id": "f-1",
+          "date": "3–4 May",
+          "bestOf": 35
+        }
+      ]
+    }
+  ]
+}
