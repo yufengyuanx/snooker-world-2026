@@ -41,8 +41,20 @@ else
     echo "✅ 代码已推送"
 fi
 
-# 4. 输出结果供 cron 后续处理
+# 4. 通过微信发送图片
 echo ""
-echo "=== 任务完成 ==="
-echo "图片路径：$IMG_PATH"
-echo "MEDIA:$IMG_PATH"
+echo "4. 发送微信..."
+openclaw message send --channel openclaw-weixin --media "$IMG_PATH" --message "🏆 斯诺克每日截图 - $(date '+%m-%d %H:%M')
+
+✅ 自动抓取 WST 比分
+✅ 更新比赛数据
+✅ 生成晋级树截图
+
+详情见 GitHub: https://github.com/yufengyuanx/snooker-world-2026"
+
+if [ $? -eq 0 ]; then
+    echo "✅ 微信发送成功"
+else
+    echo "⚠️ 微信发送失败，图片已保存在：$IMG_PATH"
+    open "$IMG_PATH"
+fi
