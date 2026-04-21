@@ -44,8 +44,8 @@ fi
 # 4. 通过微信发送图片
 echo ""
 echo "4. 发送微信..."
-# 尝试通过 openclaw-weixin 发送，如果失败则本地打开
-if openclaw message send --channel openclaw-weixin --target "frankyuan" --media "$IMG_PATH" --message "🏆 斯诺克每日截图 - $(date '+%m-%d %H:%M')
+# 使用微信插件发送，如果失败则本地打开
+if openclaw message send --channel openclaw-weixin --accountId "d37b2e65ca45-im-bot" --media "$IMG_PATH" --message "🏆 斯诺克每日截图 - $(date '+%m-%d %H:%M')
 
 ✅ 自动抓取 WST 比分
 ✅ 更新比赛数据
@@ -54,7 +54,7 @@ if openclaw message send --channel openclaw-weixin --target "frankyuan" --media 
 详情见 GitHub: https://github.com/yufengyuanx/snooker-world-2026" 2>/dev/null; then
     echo "✅ 微信发送成功"
 else
-    echo "⚠️ 微信发送失败 (target 未配置)，图片已保存在：$IMG_PATH"
+    echo "⚠️ 微信发送失败，图片已保存在：$IMG_PATH"
     echo "正在本地打开图片..."
     open "$IMG_PATH"
 fi
