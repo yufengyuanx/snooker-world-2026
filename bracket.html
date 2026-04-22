@@ -274,6 +274,8 @@
                 : `<div class="score">${typeof p.score === 'number' ? p.score : '–'}</div>`;
               const statusNode = (playerIndex === 1 && status) ? `<span class="status-inline ${statusClass}">${statusLabel}</span>` : '';
               return `<div class="slot ${winner && winner.en === p.en ? 'winner' : ''} ${p.en === '--' ? 'placeholder' : ''} ${p.sourcePending ? 'source-pending' : ''}">${href && p.en !== '--' ? `<a class="slot-left" data-tooltip="${tooltip}" href="${href}" target="_blank" rel="noreferrer">${inner}</a>` : `<div class="slot-left" data-tooltip="${tooltip}">${inner}</div>`}${scoreWithStatus}${statusNode}</div>`;
+            };
+            return `<div class="match ${status}" data-round="${idx}" data-match="${matchIdx}">${slot(a,0)}${slot(b,1)}</div>`;
           }).join('')}
         </div>`).join('');
       relayoutAndRedraw();
