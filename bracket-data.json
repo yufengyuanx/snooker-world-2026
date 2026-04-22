@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-22 08:00 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-22 18:42 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -150,13 +150,13 @@
               "zh": "克里斯·韦克林",
               "flag": "🇬🇧",
               "seed": 13,
-              "score": 5
+              "score": 8
             },
             {
               "en": "Liam Pullen",
               "zh": "利亚姆·普伦",
               "flag": "🇬🇧",
-              "score": 4
+              "score": 5
             }
           ],
           "status": "live"
