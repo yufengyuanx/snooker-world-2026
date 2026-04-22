@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-22 18:42 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-22 18:54 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -87,16 +87,16 @@
               "zh": "肖恩·墨菲",
               "flag": "🇬🇧",
               "seed": 8,
-              "score": 5
+              "score": 10
             },
             {
               "en": "Fan Zhengyi",
               "zh": "范争一",
               "flag": "🇨🇳",
-              "score": 4
+              "score": 9
             }
           ],
-          "status": "live"
+          "status": "finished"
         },
         {
           "id": "r32-5",
@@ -276,16 +276,16 @@
               "zh": "马克·塞尔比",
               "flag": "🇬🇧",
               "seed": 7,
-              "score": null
+              "score": 4
             },
             {
               "en": "Jak Jones",
               "zh": "杰克·琼斯",
               "flag": "🇬🇧",
-              "score": null
+              "score": 0
             }
           ],
-          "status": "pending"
+          "status": "live"
         },
         {
           "id": "r32-14",
