@@ -365,12 +365,14 @@
     window.addEventListener('resize', relayoutAndRedraw);
 
     Promise.all([
-      fetch('./bracket-data.json').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed'))),
-      fetch('./player-profiles.json').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
+      fetch('bracket-data.json?t=' + Date.now()).then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
+      fetch('player-profiles.json?t=' + Date.now()).then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
     ]).then(([data, profiles]) => {
       PROFILE_MAP = Object.fromEntries((profiles.players || []).map(p => [p.en, p]));
+      console.log('Data loaded:', data.tournament?.lastUpdated);
       render(data);
-    }).catch(() => {
+    }).catch((err) => {
+      console.error('Fetch error:', err);
       PROFILE_MAP = Object.fromEntries((JSON.parse(document.getElementById('fallback-profiles').textContent).players || []).map(p => [p.en, p]));
       render(JSON.parse(document.getElementById('fallback-data').textContent));
     });
