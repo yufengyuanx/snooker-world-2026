@@ -138,12 +138,12 @@
       transition: transform .18s ease, border-color .18s ease;
     }
     .slot-left:hover .avatar { transform: scale(1.06); border-color: rgba(125,211,252,.55); }
-    .flag { font-size: 18px; line-height: 1; flex: 0 0 auto; }
+    .flag { font-size: 20px; line-height: 1; flex: 0 0 auto; }
     .names { min-width: 0; }
     .name-en { display: none; }
-    .name-zh { color: var(--text); font-size: 18px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .seed { color: var(--accent2); font-size: 14px; margin-left: 4px; }
-    .score { min-width: 28px; text-align: center; color: var(--win); font-weight: 800; font-size: 20px; }
+    .name-zh { color: var(--text); font-size: 22px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .seed { color: var(--accent2); font-size: 16px; margin-left: 6px; }
+    .score { min-width: 32px; text-align: center; color: var(--win); font-weight: 800; font-size: 24px; }
     .status-inline, .status-inline-live, .status-inline-finished, .status-inline-pending { display: none !important; }
     .score-input {
       width: 32px; text-align: center; color: var(--win); font-weight: 800; font-size: 14px;
@@ -374,8 +374,8 @@
     window.addEventListener('resize', relayoutAndRedraw);
 
     Promise.all([
-      fetch('bracket-data.json?v=9').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
-      fetch('player-profiles.json?v=9').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
+      fetch('bracket-data.json?v=10').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
+      fetch('player-profiles.json?v=10').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
     ]).then(([data, profiles]) => {
       PROFILE_MAP = Object.fromEntries((profiles.players || []).map(p => [p.en, p]));
       console.log('Data loaded:', data.tournament?.lastUpdated);
