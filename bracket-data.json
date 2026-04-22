@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-22 00:16 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-22 08:00 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -129,7 +129,7 @@
               "zh": "罗尼·奥沙利文",
               "flag": "🇬🇧",
               "seed": 12,
-              "score": 5
+              "score": 7
             },
             {
               "en": "He Guoqiang",
@@ -339,16 +339,16 @@
               "zh": "贾德·特鲁姆普",
               "flag": "🇬🇧",
               "seed": 2,
-              "score": 5
+              "score": 10
             },
             {
               "en": "Gary Wilson",
               "zh": "加里·威尔逊",
               "flag": "🇬🇧",
-              "score": 4
+              "score": 5
             }
           ],
-          "status": "live"
+          "status": "finished"
         }
       ]
     },
