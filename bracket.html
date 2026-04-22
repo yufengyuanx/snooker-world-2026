@@ -374,8 +374,8 @@
     window.addEventListener('resize', relayoutAndRedraw);
 
     Promise.all([
-      fetch('bracket-data.json?v=6').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
-      fetch('player-profiles.json?v=6').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
+      fetch('bracket-data.json?v=9').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
+      fetch('player-profiles.json?v=9').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
     ]).then(([data, profiles]) => {
       PROFILE_MAP = Object.fromEntries((profiles.players || []).map(p => [p.en, p]));
       console.log('Data loaded:', data.tournament?.lastUpdated);
