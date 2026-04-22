@@ -135,7 +135,7 @@
     .name-zh { color: var(--text); font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .seed { color: var(--accent2); font-size: 12px; margin-left: 6px; }
     .score { min-width: 28px; text-align: center; color: var(--win); font-weight: 800; font-size: 18px; }
-    .status-inline { display: none; }
+    .status-inline, .status-inline-live, .status-inline-finished, .status-inline-pending { display: none !important; }
     .score-input {
       width: 42px; text-align: center; color: var(--win); font-weight: 800; font-size: 16px;
       background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 8px;
@@ -365,8 +365,8 @@
     window.addEventListener('resize', relayoutAndRedraw);
 
     Promise.all([
-      fetch('bracket-data.json?t=' + Date.now()).then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
-      fetch('player-profiles.json?t=' + Date.now()).then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
+      fetch('bracket-data.json?v=20260422').then(r => r.ok ? r.json() : Promise.reject(new Error('data fetch failed: ' + r.status))),
+      fetch('player-profiles.json?v=20260422').then(r => r.ok ? r.json() : Promise.resolve(JSON.parse(document.getElementById('fallback-profiles').textContent)))
     ]).then(([data, profiles]) => {
       PROFILE_MAP = Object.fromEntries((profiles.players || []).map(p => [p.en, p]));
       console.log('Data loaded:', data.tournament?.lastUpdated);
