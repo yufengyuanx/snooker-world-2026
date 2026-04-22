@@ -233,8 +233,10 @@
     const pendingSourcePlayer = () => ({ en: '--', zh: '待定', flag: '', seed: null, score: null, sourcePending: true, avatar: '' });
 
     const hydrateRounds = (rounds) => {
+      console.log('hydrateRounds input:', rounds?.length, 'rounds');
       const cloned = JSON.parse(JSON.stringify(rounds || []));
-      if (!cloned.length) return cloned;
+      if (!cloned.length) { console.log('No rounds, returning empty'); return cloned; }
+      console.log('First round matches:', cloned[0].matches?.length);
       cloned[0].matches = cloned[0].matches.map(m => ({ ...m, players: (m.players || []).map(normalizePlayer), status: m.status || inferStatus(m) }));
       for (let i = 1; i < cloned.length; i++) {
         const prev = cloned[i - 1].matches || [];
@@ -246,11 +248,14 @@
           match.status = match.status || inferStatus(match);
         });
       }
+      console.log('hydrateRounds output:', cloned.length, 'rounds');
       return cloned;
     };
 
     const render = (data) => {
+      console.log('render called with data:', data);
       const rounds = hydrateRounds(data.rounds || []);
+      console.log('rendering', rounds.length, 'rounds');
       document.getElementById('bracket').innerHTML = rounds.map((round, idx) => `
         <div class="round" data-round-index="${idx}">
           <div class="round-title">${round.title}<span class="round-sub">${round.subtitle || ''}</span></div>
