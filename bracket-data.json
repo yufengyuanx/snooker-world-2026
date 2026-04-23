@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-22 18:54 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-23 08:03 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -129,7 +129,7 @@
               "zh": "罗尼·奥沙利文",
               "flag": "🇬🇧",
               "seed": 12,
-              "score": 7
+              "score": 10
             },
             {
               "en": "He Guoqiang",
@@ -138,7 +138,7 @@
               "score": 2
             }
           ],
-          "status": "live"
+          "status": "finished"
         },
         {
           "id": "r32-7",
@@ -150,16 +150,16 @@
               "zh": "克里斯·韦克林",
               "flag": "🇬🇧",
               "seed": 13,
-              "score": 8
+              "score": 10
             },
             {
               "en": "Liam Pullen",
               "zh": "利亚姆·普伦",
               "flag": "🇬🇧",
-              "score": 5
+              "score": 6
             }
           ],
-          "status": "live"
+          "status": "finished"
         },
         {
           "id": "r32-8",
@@ -171,16 +171,16 @@
               "zh": "尼尔·罗伯逊",
               "flag": "🇦🇺",
               "seed": 4,
-              "score": null
+              "score": 5
             },
             {
               "en": "Pang Junxu",
               "zh": "庞俊旭",
               "flag": "🇨🇳",
-              "score": null
+              "score": 4
             }
           ],
-          "status": "pending"
+          "status": "live"
         },
         {
           "id": "r32-9",
@@ -276,16 +276,16 @@
               "zh": "马克·塞尔比",
               "flag": "🇬🇧",
               "seed": 7,
-              "score": 4
+              "score": 10
             },
             {
               "en": "Jak Jones",
               "zh": "杰克·琼斯",
               "flag": "🇬🇧",
-              "score": 0
+              "score": 2
             }
           ],
-          "status": "live"
+          "status": "finished"
         },
         {
           "id": "r32-14",
@@ -318,16 +318,16 @@
               "zh": "斯佳辉",
               "flag": "🇨🇳",
               "seed": 15,
-              "score": null
+              "score": 3
             },
             {
               "en": "Hossein Vafaei",
               "zh": "侯赛因·瓦菲",
               "flag": "🇮🇷",
-              "score": null
+              "score": 6
             }
           ],
-          "status": "pending"
+          "status": "live"
         },
         {
           "id": "r32-16",
