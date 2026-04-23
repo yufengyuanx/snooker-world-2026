@@ -85,8 +85,29 @@
       z-index: 2;
       justify-content: center;
     }
-    .round[data-round-index="3"],
-    .round[data-round-index="4"] { display: none !important; }
+    .round[data-round-index="4"],
+    .round[data-round-index="3"] { display: none !important; }
+    .round[data-round-index="0"] { opacity: 0.5; }
+    .round[data-round-index="1"],
+    .round[data-round-index="2"] { opacity: 1; }
+    .round[data-round-index="1"] .round-title,
+    .round[data-round-index="2"] .round-title { box-shadow: 0 0 20px rgba(125,211,252,.4), 0 8px 20px rgba(0,0,0,.16); border-color: rgba(125,211,252,.6); }
+    .round[data-round-index="1"] .match,
+    .round[data-round-index="2"] .match { border-color: rgba(125,211,252,.35); }
+    .round[data-round-index="1"] .name-zh,
+    .round[data-round-index="2"] .name-zh { font-size: 30px; }
+    .round[data-round-index="1"] .score,
+    .round[data-round-index="2"] .score { font-size: 32px; }
+    .round[data-round-index="1"] .slot,
+    .round[data-round-index="2"] .slot { min-height: 72px; padding: 12px 10px; }
+    .round[data-round-index="1"] .avatar,
+    .round[data-round-index="2"] .avatar { width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,.4), 0 0 0 3px rgba(125,211,252,.2); border: 2px solid rgba(255,255,255,.3); }
+    .round[data-round-index="1"] .flag,
+    .round[data-round-index="2"] .flag { font-size: 28px; margin-left: 4px; }
+    .round[data-round-index="1"] .seed,
+    .round[data-round-index="2"] .seed { font-size: 18px; }
+    .round[data-round-index="1"] .match,
+    .round[data-round-index="2"] .match { padding: 6px; margin-bottom: 8px; }
     .bracket-svg { display: none; }
     .round { display: grid; gap: 16px; position: relative; }
     .round-title {
@@ -97,6 +118,7 @@
       letter-spacing: 1px;
     }
     .round-sub { display: none; }
+    .round-bo { font-size: 16px; font-weight: 500; opacity: 0.8; margin-left: 8px; }
     .match {
       position: relative; border: 1px solid var(--line); border-radius: 14px;
       background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
@@ -139,6 +161,7 @@
     .names { min-width: 0; }
     .name-en { display: none; }
     .name-zh { color: var(--text); font-size: 22px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .name-zh.chinese { color: #fbbf24; }
     .seed { color: var(--accent2); font-size: 16px; margin-left: 6px; }
     .score { min-width: 32px; text-align: center; color: var(--win); font-weight: 800; font-size: 24px; }
     .status-inline, .status-inline-live, .status-inline-finished, .status-inline-pending { display: none !important; }
@@ -201,7 +224,11 @@
       return base;
     };
 
-    const advancePlayer = (player) => ({ ...normalizePlayer(player), score: null });
+    const advancePlayer = (player) => {
+  const p = normalizePlayer(player);
+  p.score = null;
+  return p;
+};
 
     const inferStatus = (match) => {
       const players = match.players || [];
@@ -236,14 +263,22 @@
       const cloned = JSON.parse(JSON.stringify(rounds || []));
       if (!cloned.length) { console.log('No rounds, returning empty'); return cloned; }
       console.log('First round matches:', cloned[0].matches?.length);
+      // First round: use data as-is
       cloned[0].matches = cloned[0].matches.map(m => ({ ...m, players: (m.players || []).map(normalizePlayer), status: m.status || inferStatus(m) }));
+      // Later rounds: only populate if match has no players (auto-advance from previous round)
       for (let i = 1; i < cloned.length; i++) {
         const prev = cloned[i - 1].matches || [];
         const cur = cloned[i].matches || [];
         cur.forEach((match, idx) => {
-          const leftWinner = winnerOf(prev[idx * 2]);
-          const rightWinner = winnerOf(prev[idx * 2 + 1]);
-          match.players = [leftWinner ? advancePlayer(leftWinner) : pendingSourcePlayer(), rightWinner ? advancePlayer(rightWinner) : pendingSourcePlayer()];
+          // Only auto-populate if no explicit player data exists
+          if (!match.players || match.players.length < 2 || !match.players[0].en || match.players[0].en === '--') {
+            const leftWinner = winnerOf(prev[idx * 2]);
+            const rightWinner = winnerOf(prev[idx * 2 + 1]);
+            match.players = [leftWinner ? advancePlayer(leftWinner) : pendingSourcePlayer(), rightWinner ? advancePlayer(rightWinner) : pendingSourcePlayer()];
+          } else {
+            // Use existing player data from JSON
+            match.players = (match.players || []).map(normalizePlayer);
+          }
           match.status = match.status || inferStatus(match);
         });
       }
@@ -257,7 +292,7 @@
       console.log('rendering', rounds.length, 'rounds');
       document.getElementById('bracket').innerHTML = rounds.map((round, idx) => `
         <div class="round" data-round-index="${idx}">
-          <div class="round-title">${round.title}<span class="round-sub">${round.subtitle || ''}</span></div>
+          <div class="round-title">${round.title} <span class="round-bo">(BO${round.matches?.[0]?.bestOf || ''})</span><span class="round-sub">${round.subtitle || ''}</span></div>
           ${(round.matches || []).map((match, matchIdx) => {
             const [a, b] = (match.players || [null, null]).map(normalizePlayer);
             const winner = winnerOf(match);
@@ -267,10 +302,10 @@
             const slot = (p, playerIndex) => {
               const tooltip = [p.zh, p.en].filter(Boolean).join(' · ');
               const href = PROFILE_MAP[p.en]?.wstProfile || '';
-              const inner = `${p.avatar ? `<img class="avatar" src="${p.avatar}" alt="${p.en}" loading="lazy" />` : ''}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh">${p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
-              const scoreWithStatus = idx === 0
-                ? `<input class="score-input" type="text" inputmode="numeric" value="${typeof p.score === 'number' ? p.score : ''}" data-match-id="${match.id}" data-player-index="${playerIndex}" ${p.en === '--' ? 'disabled' : ''} />`
-                : `<div class="score">${typeof p.score === 'number' ? p.score : '–'}</div>`;
+              const inner = `${p.avatar ? `<img class="avatar" src="${p.avatar}" alt="${p.en}" loading="lazy" />` : ''}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh ${p.flag === '🇨🇳' ? 'chinese' : ''}">${p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
+              const scoreWithStatus = typeof p.score === 'number'
+                ? `<div class="score">${p.score}</div>`
+                : `<div class="score">–</div>`;
               const statusNode = (playerIndex === 1 && status) ? `<span class="status-inline ${statusClass}">${statusLabel}</span>` : '';
               return `<div class="slot ${winner && winner.en === p.en ? 'winner' : ''} ${p.en === '--' ? 'placeholder' : ''} ${p.sourcePending ? 'source-pending' : ''}">${href && p.en !== '--' ? `<a class="slot-left" data-tooltip="${tooltip}" href="${href}" target="_blank" rel="noreferrer">${inner}</a>` : `<div class="slot-left" data-tooltip="${tooltip}">${inner}</div>`}${scoreWithStatus}${statusNode}</div>`;
             };
