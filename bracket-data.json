@@ -434,13 +434,14 @@
               "zh": "克里斯·韦克林",
               "flag": "🇬🇧",
               "seed": 13,
-              "score": null
+              "score": 4
             },
             {
-              "en": "--",
-              "zh": "待定",
-              "flag": "",
-              "score": null
+              "en": "Neil Robertson",
+              "zh": "尼尔·罗伯逊",
+              "flag": "🇦🇺",
+              "seed": 4,
+              "score": 4
             }
           ]
         },
