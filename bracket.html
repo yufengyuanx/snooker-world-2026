@@ -397,7 +397,7 @@
           const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           path.setAttribute('d', `M ${x1} ${y1} L ${midX} ${y1} L ${midX} ${y2} L ${x2} ${y2} M ${midX} ${(y1 + y2) / 2} L ${xn} ${yn}`);
           path.setAttribute('fill', 'none');
-          path.setAttribute('stroke', r === 0 ? getComputedStyle(document.documentElement).getPropertyValue('--lineStrong') : getComputedStyle(document.documentElement).getPropertyValue('--lineSoft'));
+          path.setAttribute('stroke', r === 0 ? 'rgba(125,211,252,0.5)' : 'rgba(125,211,252,0.3)');
           path.setAttribute('stroke-width', r === 0 ? '2.5' : '2');
           path.setAttribute('stroke-linecap', 'round');
           path.setAttribute('stroke-linejoin', 'round');
