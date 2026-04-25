@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-25 13:03 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-26 00:17 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -368,14 +368,14 @@
               "zh": "赵心童",
               "flag": "🇨🇳",
               "seed": 1,
-              "score": 4
+              "score": 9
             },
             {
               "en": "Ding Junhui",
               "zh": "丁俊晖",
               "flag": "🇨🇳",
               "seed": 16,
-              "score": 4
+              "score": 7
             }
           ]
         },
@@ -448,21 +448,21 @@
           "id": "r16-5",
           "date": "24 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "Kyren Wilson",
               "zh": "凯伦·威尔逊",
               "flag": "🇬🇧",
               "seed": 3,
-              "score": 7
+              "score": 9
             },
             {
               "en": "Mark Allen",
               "zh": "马克·艾伦",
               "flag": "🇬🇧",
               "seed": 14,
-              "score": 9
+              "score": 13
             }
           ]
         },
@@ -514,20 +514,20 @@
           "id": "r16-8",
           "date": "25 Apr",
           "bestOf": 25,
-          "status": "pending",
+          "status": "live",
           "players": [
             {
               "en": "Hossein Vafaei",
               "zh": "侯赛因·瓦菲",
               "flag": "🇮🇷",
-              "score": null
+              "score": 4
             },
             {
               "en": "Judd Trump",
               "zh": "贾德·特鲁姆普",
               "flag": "🇬🇧",
               "seed": 2,
-              "score": null
+              "score": 3
             }
           ]
         }
