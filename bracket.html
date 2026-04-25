@@ -302,7 +302,11 @@
             const slot = (p, playerIndex) => {
               const tooltip = [p.zh, p.en].filter(Boolean).join(' · ');
               const href = PROFILE_MAP[p.en]?.wstProfile || '';
-              const inner = `${p.avatar ? `<img class="avatar" src="${p.avatar}" alt="${p.en}" loading="lazy" />` : ''}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh ${p.flag === '🇨🇳' ? 'chinese' : ''}">${p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
+              const DEFAULT_AVATAR = 'https://images.gc.wstservices.co.uk/fit-in/400x600/9852f230-bb73-11ee-88c0-bd1a9999a15b.png';
+              const avatarHtml = p.en === '--'
+                ? `<img class="avatar" src="${DEFAULT_AVATAR}" alt="待定" loading="lazy" />`
+                : (p.avatar ? `<img class="avatar" src="${p.avatar}" alt="${p.en}" loading="lazy" />` : '');
+              const inner = `${avatarHtml}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh ${p.flag === '🇨🇳' ? 'chinese' : ''}">${p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
               const scoreWithStatus = typeof p.score === 'number'
                 ? `<div class="score">${p.score}</div>`
                 : `<div class="score">–</div>`;
