@@ -400,10 +400,13 @@
           const xn = n.left - stageRect.left + 10, yn = n.top - stageRect.top + n.height / 2;
 
           // 从胜者画线到下一轮
+          // 使用相对位置而不是绝对位置
+          const stageRect = stage.getBoundingClientRect();
+
           if (winnerA) {
-            const y1 = a.top - stageRect.top + a.height / 2;
-            const x1 = a.right - stageRect.left;
-            const xMid = x1 + (xn - x1) * 0.4;
+            const y1 = winnerA.getBoundingClientRect().top + winnerA.getBoundingClientRect().height / 2 - stageRect.top;
+            const x1 = winnerA.getBoundingClientRect().right - stageRect.left;
+            const xMid = x1 + 40;
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path.setAttribute('d', `M ${x1} ${y1} L ${xMid} ${y1} L ${xMid} ${yn} L ${xn} ${yn}`);
             path.setAttribute('fill', 'none');
@@ -414,9 +417,9 @@
           }
 
           if (winnerB) {
-            const y2 = b.top - stageRect.top + b.height / 2;
-            const x2 = b.right - stageRect.left;
-            const xMid = x2 + (xn - x2) * 0.4;
+            const y2 = winnerB.getBoundingClientRect().top + winnerB.getBoundingClientRect().height / 2 - stageRect.top;
+            const x2 = winnerB.getBoundingClientRect().right - stageRect.left;
+            const xMid = x2 + 40;
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             path.setAttribute('d', `M ${x2} ${y2} L ${xMid} ${y2} L ${xMid} ${yn}`);
             path.setAttribute('fill', 'none');
