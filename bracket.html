@@ -389,19 +389,42 @@
         nextMatches.forEach((nextMatch, idx) => {
           const sourceA = currentMatches[idx * 2], sourceB = currentMatches[idx * 2 + 1];
           if (!sourceA || !sourceB) return;
+
+          // 找出两个比赛中的胜者
+          const winnerA = sourceA.querySelector('.slot.winner');
+          const winnerB = sourceB.querySelector('.slot.winner');
+
+          if (!winnerA && !winnerB) return;
+
           const a = sourceA.getBoundingClientRect(), b = sourceB.getBoundingClientRect(), n = nextMatch.getBoundingClientRect();
-          const x1 = a.right - stageRect.left, y1 = a.top - stageRect.top + a.height / 2;
-          const x2 = b.right - stageRect.left, y2 = b.top - stageRect.top + b.height / 2;
-          const xn = n.left - stageRect.left, yn = n.top - stageRect.top + n.height / 2;
-          const midX = x1 + (xn - x1) * 0.42;
-          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-          path.setAttribute('d', `M ${x1} ${y1} L ${midX} ${y1} L ${midX} ${y2} L ${x2} ${y2} M ${midX} ${(y1 + y2) / 2} L ${xn} ${yn}`);
-          path.setAttribute('fill', 'none');
-          path.setAttribute('stroke', r === 0 ? 'rgba(125,211,252,0.5)' : 'rgba(125,211,252,0.3)');
-          path.setAttribute('stroke-width', r === 0 ? '2.5' : '2');
-          path.setAttribute('stroke-linecap', 'round');
-          path.setAttribute('stroke-linejoin', 'round');
-          svg.appendChild(path);
+          const xn = n.left - stageRect.left + 10, yn = n.top - stageRect.top + n.height / 2;
+
+          // 从胜者画线到下一轮
+          if (winnerA) {
+            const y1 = a.top - stageRect.top + a.height / 2;
+            const x1 = a.right - stageRect.left;
+            const xMid = x1 + (xn - x1) * 0.4;
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M ${x1} ${y1} L ${xMid} ${y1} L ${xMid} ${yn} L ${xn} ${yn}`);
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', r === 0 ? 'rgba(125,211,252,0.5)' : 'rgba(125,211,252,0.3)');
+            path.setAttribute('stroke-width', r === 0 ? '2.5' : '2');
+            path.setAttribute('stroke-linecap', 'round');
+            svg.appendChild(path);
+          }
+
+          if (winnerB) {
+            const y2 = b.top - stageRect.top + b.height / 2;
+            const x2 = b.right - stageRect.left;
+            const xMid = x2 + (xn - x2) * 0.4;
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', `M ${x2} ${y2} L ${xMid} ${y2} L ${xMid} ${yn}`);
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', r === 0 ? 'rgba(125,211,252,0.5)' : 'rgba(125,211,252,0.3)');
+            path.setAttribute('stroke-width', r === 0 ? '2.5' : '2');
+            path.setAttribute('stroke-linecap', 'round');
+            svg.appendChild(path);
+          }
         });
       }
     };
