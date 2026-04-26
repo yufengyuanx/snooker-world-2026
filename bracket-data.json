@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-26 08:00 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-27 00:39 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -361,21 +361,21 @@
           "id": "r16-1",
           "date": "24 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "Zhao Xintong",
               "zh": "赵心童",
               "flag": "🇨🇳",
               "seed": 1,
-              "score": 9
+              "score": 13
             },
             {
               "en": "Ding Junhui",
               "zh": "丁俊晖",
               "flag": "🇨🇳",
               "seed": 16,
-              "score": 7
+              "score": 9
             }
           ]
         },
@@ -434,14 +434,14 @@
               "zh": "克里斯·韦克林",
               "flag": "🇬🇧",
               "seed": 13,
-              "score": 4
+              "score": 6
             },
             {
               "en": "Neil Robertson",
               "zh": "尼尔·罗伯逊",
               "flag": "🇦🇺",
               "seed": 4,
-              "score": 4
+              "score": 10
             }
           ]
         },
@@ -493,21 +493,21 @@
           "id": "r16-7",
           "date": "25 Apr",
           "bestOf": 25,
-          "status": "pending",
+          "status": "live",
           "players": [
             {
               "en": "Mark Selby",
               "zh": "马克·塞尔比",
               "flag": "🇬🇧",
               "seed": 7,
-              "score": null
+              "score": 4
             },
             {
               "en": "Wu Yize",
               "zh": "吴宜泽",
               "flag": "🇨🇳",
               "seed": 10,
-              "score": null
+              "score": 4
             }
           ]
         },
@@ -521,14 +521,14 @@
               "en": "Hossein Vafaei",
               "zh": "侯赛因·瓦菲",
               "flag": "🇮🇷",
-              "score": 4
+              "score": 7
             },
             {
               "en": "Judd Trump",
               "zh": "贾德·特鲁姆普",
               "flag": "🇬🇧",
               "seed": 2,
-              "score": 4
+              "score": 9
             }
           ]
         }
