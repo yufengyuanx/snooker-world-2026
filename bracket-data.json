@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-27 23:30 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-28 00:12 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -493,7 +493,7 @@
           "id": "r16-7",
           "date": "25 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "Mark Selby",
@@ -507,7 +507,7 @@
               "zh": "吴宜泽",
               "flag": "🇨🇳",
               "seed": 10,
-              "score": 12
+              "score": 13
             }
           ]
         },
