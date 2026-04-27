@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-27 08:10 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-27 23:30 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -405,21 +405,21 @@
           "id": "r16-3",
           "date": "25 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "John Higgins",
               "zh": "约翰·希金斯",
               "flag": "🇬🇧",
               "seed": 5,
-              "score": 7
+              "score": 13
             },
             {
               "en": "Ronnie O'Sullivan",
               "zh": "罗尼·奥沙利文",
               "flag": "🇬🇧",
               "seed": 12,
-              "score": 9
+              "score": 12
             }
           ]
         },
@@ -500,14 +500,14 @@
               "zh": "马克·塞尔比",
               "flag": "🇬🇧",
               "seed": 7,
-              "score": 7
+              "score": 11
             },
             {
               "en": "Wu Yize",
               "zh": "吴宜泽",
               "flag": "🇨🇳",
               "seed": 10,
-              "score": 9
+              "score": 12
             }
           ]
         },
