@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-28 00:12 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-28 08:00 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -427,21 +427,21 @@
           "id": "r16-4",
           "date": "24 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "Chris Wakelin",
               "zh": "克里斯·韦克林",
               "flag": "🇬🇧",
               "seed": 13,
-              "score": 6
+              "score": 7
             },
             {
               "en": "Neil Robertson",
               "zh": "尼尔·罗伯逊",
               "flag": "🇦🇺",
               "seed": 4,
-              "score": 10
+              "score": 13
             }
           ]
         },
@@ -515,20 +515,20 @@
           "id": "r16-8",
           "date": "25 Apr",
           "bestOf": 25,
-          "status": "live",
+          "status": "finished",
           "players": [
             {
               "en": "Hossein Vafaei",
               "zh": "侯赛因·瓦菲",
               "flag": "🇮🇷",
-              "score": 7
+              "score": 13
             },
             {
               "en": "Judd Trump",
               "zh": "贾德·特鲁姆普",
               "flag": "🇬🇧",
               "seed": 2,
-              "score": 9
+              "score": 12
             }
           ]
         }
