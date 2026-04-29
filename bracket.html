@@ -95,38 +95,34 @@
     .bracket-stage { position: relative; min-width: auto; width: 100%; }
     .bracket {
       display: grid;
-      grid-template-columns: minmax(220px, auto) minmax(300px, 1fr) minmax(380px, 1fr) minmax(380px, 1fr);
-      grid-auto-columns: minmax(380px, 1fr);
+      grid-template-columns: minmax(240px, auto) minmax(240px, auto) minmax(360px, 1fr) minmax(360px, 1fr) minmax(360px, 1fr);
+      grid-auto-columns: minmax(360px, 1fr);
       grid-auto-flow: column;
-      gap: 8px 48px;
+      gap: 8px 100px;
       width: max-content;
       min-width: 100%;
       align-items: start;
       position: relative;
       z-index: 2;
     }
-    .round[data-round-index="4"] { display: none !important; }
-    .round[data-round-index="0"] { opacity: 0.5; }
-    .round:not([data-round-index="0"]) { opacity: 1; }
-    .round:not([data-round-index="0"]) .round-title { box-shadow: 0 0 20px rgba(125,211,252,.4), 0 8px 20px rgba(0,0,0,.16); border-color: rgba(125,211,252,.6); }
-    .round:not([data-round-index="0"]) .match { border-color: rgba(125,211,252,.4); padding: 8px; margin-bottom: 12px; border-width: 2px; }
-    .round:not([data-round-index="0"]) .name-zh { font-size: 24px; font-weight: 800; letter-spacing: 1px; }
-    .round:not([data-round-index="0"]) .score { font-size: 28px; }
-    .round:not([data-round-index="0"]) .slot { min-height: 92px; padding: 12px 12px; gap: 10px; }
-    .round:not([data-round-index="0"]) .avatar-3d-wrap {
-      width: 56px; height: 56px;
+    .round:is([data-round-index="0"], [data-round-index="1"]) { opacity: 0.5; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) { opacity: 1; }
+    .round[data-round-index="4"] { display: none; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .round-title { box-shadow: 0 0 20px rgba(125,211,252,.4), 0 8px 20px rgba(0,0,0,.16); border-color: rgba(125,211,252,.6); }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .match { border-color: rgba(125,211,252,.4); padding: 8px; margin-bottom: 12px; border-width: 2px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .avatar-3d-wrap {
       box-shadow: 0 8px 16px -4px rgba(0,0,0,0.8), 0 0 0 2px rgba(17,26,52,0.9), 0 0 0 4px rgba(125,211,252,0.4), inset 0 0 0 1px rgba(255,255,255,.6);
       position: relative; z-index: 10;
     }
-    .round:not([data-round-index="0"]) .slot-left:hover .avatar-3d-wrap { transform: scale(1.06); }
-    .round:not([data-round-index="0"]) .flag { font-size: 26px; margin-left: 2px; }
-    .round:not([data-round-index="0"]) .seed { font-size: 16px; }
-    /* 8 强及以后进一步增大 */
-    .round:is([data-round-index="2"], [data-round-index="3"], [data-round-index="4"]) .slot { min-height: 116px; padding: 18px 14px; gap: 14px; }
-    .round:is([data-round-index="2"], [data-round-index="3"], [data-round-index="4"]) .avatar-3d-wrap { width: 84px; height: 84px; }
-    .round:is([data-round-index="2"], [data-round-index="3"], [data-round-index="4"]) .name-zh { font-size: 30px; }
-    .round:is([data-round-index="2"], [data-round-index="3"], [data-round-index="4"]) .score { font-size: 36px; }
-    .round:is([data-round-index="2"], [data-round-index="3"], [data-round-index="4"]) .flag { font-size: 32px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .slot-left:hover .avatar-3d-wrap { transform: scale(1.06); }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .seed { font-size: 16px; }
+    
+    /* 8 强、4 强及决赛尺寸 (超大视野强化版) */
+    .round:is([data-round-index="2"], [data-round-index="3"]) .name-zh { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .score { font-size: 38px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .slot { min-height: 116px; padding: 18px 14px; gap: 14px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .avatar-3d-wrap { width: 84px; height: 84px; }
+    .round:is([data-round-index="2"], [data-round-index="3"]) .flag { font-size: 32px; margin-left: 2px; }
     .bracket-svg {
       position: absolute;
       top: 0;
@@ -370,7 +366,13 @@
             return `<div class="match ${status}" data-round="${idx}" data-match="${matchIdx}">${slot(a,0)}${slot(b,1)}</div>`;
           }).join('')}
         </div>`).join('');
-      relayoutAndRedraw();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(relayoutAndRedraw);
+      } else {
+        setTimeout(relayoutAndRedraw, 500);
+      }
+      setTimeout(relayoutAndRedraw, 1500);
+      setTimeout(relayoutAndRedraw, 3500);
       bindScoreInputs();
     };
 
@@ -471,6 +473,9 @@
           const aRect = sourceA.getBoundingClientRect();
           const bRect = sourceB.getBoundingClientRect();
           const nRect = nextMatch.getBoundingClientRect();
+          const nSlots = nextMatch.querySelectorAll('.slot');
+          const nRectA = nSlots[0] ? nSlots[0].getBoundingClientRect() : nRect;
+          const nRectB = nSlots[1] ? nSlots[1].getBoundingClientRect() : nRect;
 
           const xA = aRect.right - stageRect.left;
           const yA = aRect.top + aRect.height / 2 - stageRect.top;
@@ -479,13 +484,14 @@
           const yB = bRect.top + bRect.height / 2 - stageRect.top;
 
           const xN = nRect.left - stageRect.left;
-          const yN = nRect.top + nRect.height / 2 - stageRect.top;
+          const yNA = nRectA.top + nRectA.height / 2 - stageRect.top;
+          const yNB = nRectB.top + nRectB.height / 2 - stageRect.top;
 
           const hasWinnerA = !!sourceA.querySelector('.slot.winner');
           const hasWinnerB = !!sourceB.querySelector('.slot.winner');
 
-          svg.appendChild(createPath(xA, yA, xN, yN, hasWinnerA));
-          svg.appendChild(createPath(xB, yB, xN, yN, hasWinnerB));
+          svg.appendChild(createPath(xA, yA, xN, yNA, hasWinnerA));
+          svg.appendChild(createPath(xB, yB, xN, yNB, hasWinnerB));
         });
       }
     };
