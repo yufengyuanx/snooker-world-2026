@@ -95,11 +95,9 @@
     .bracket-stage { position: relative; min-width: auto; width: 100%; }
     .bracket {
       display: grid;
-      grid-template-columns: minmax(240px, auto) minmax(240px, auto) minmax(360px, 1fr) minmax(360px, 1fr) minmax(360px, 1fr);
-      grid-auto-columns: minmax(360px, 1fr);
-      grid-auto-flow: column;
-      gap: 8px 100px;
-      width: max-content;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px 48px;
+      width: 100%;
       min-width: 100%;
       align-items: start;
       position: relative;
