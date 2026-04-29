@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-04-29 08:00 (Asia/Shanghai)"
+    "lastUpdated": "2026-04-29 22:58 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -546,11 +546,11 @@
           "players": [
             {
               "en": "Zhao Xintong",
-              "score": 8
+              "score": 9
             },
             {
               "en": "Shaun Murphy",
-              "score": 8
+              "score": 11
             }
           ],
           "status": "live"
@@ -562,11 +562,11 @@
           "players": [
             {
               "en": "John Higgins",
-              "score": 3
+              "score": 7
             },
             {
               "en": "Neil Robertson",
-              "score": 5
+              "score": 9
             }
           ],
           "status": "live"
@@ -578,14 +578,14 @@
           "players": [
             {
               "en": "Mark Allen",
-              "score": 8
+              "score": 13
             },
             {
               "en": "Barry Hawkins",
-              "score": 8
+              "score": 11
             }
           ],
-          "status": "live"
+          "status": "finished"
         },
         {
           "id": "qf-4",
@@ -594,11 +594,11 @@
           "players": [
             {
               "en": "Wu Yize",
-              "score": 4
+              "score": 7
             },
             {
               "en": "Hossein Vafaei",
-              "score": 4
+              "score": 5
             }
           ],
           "status": "live"
