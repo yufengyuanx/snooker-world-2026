@@ -262,14 +262,17 @@
     const normalizePlayer = (player) => {
       if (!player) return { en: '--', zh: '待定', flag: '', seed: null, score: null, avatar: '' };
       const base = {
-        en: player.en || '--', zh: player.zh || (player.en ? '' : '待定'), flag: player.flag || '',
+        en: player.en || '--', zh: player.zh || '', flag: player.flag || '',
         seed: player.seed ?? null, score: player.score ?? null, avatar: player.avatar || ''
       };
       const prof = PROFILE_MAP[base.en];
       if (prof) {
         if (!base.avatar && prof.avatar) base.avatar = prof.avatar;
         if ((!base.flag || base.flag === '🏴') && prof.flag) base.flag = prof.flag;
+        if (!base.zh && prof.zh) base.zh = prof.zh;
+        if (base.seed === null && prof.seed) base.seed = prof.seed;
       }
+      if (!base.zh) base.zh = base.en !== '--' ? '' : '待定';
       return base;
     };
 
