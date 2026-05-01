@@ -67,11 +67,9 @@
       letter-spacing: 8px;
       text-align: center;
       font-weight: 900;
-      /* 冠军金属渐变色 */
       background: linear-gradient(180deg, #fff7d6 0%, #d4af37 40%, #aa771c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* 弥散光影 */
       filter: drop-shadow(0 6px 16px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(212,175,55,0.3));
     }
     .layout { display: block; }
@@ -95,7 +93,7 @@
     .bracket-stage { position: relative; min-width: auto; width: 100%; }
     .bracket {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 0.85fr 0.85fr 0.85fr 1.2fr 1.3fr;
       gap: 8px 48px;
       width: 100%;
       min-width: 100%;
@@ -103,24 +101,33 @@
       position: relative;
       z-index: 2;
     }
-    .round:is([data-round-index="0"], [data-round-index="1"]) { opacity: 0.5; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) { opacity: 1; }
-    .round[data-round-index="4"] { display: none; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .round-title { box-shadow: 0 0 20px rgba(125,211,252,.4), 0 8px 20px rgba(0,0,0,.16); border-color: rgba(125,211,252,.6); }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .match { border-color: rgba(125,211,252,.4); padding: 8px; margin-bottom: 12px; border-width: 2px; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .avatar-3d-wrap {
-      box-shadow: 0 8px 16px -4px rgba(0,0,0,0.8), 0 0 0 2px rgba(17,26,52,0.9), 0 0 0 4px rgba(125,211,252,0.4), inset 0 0 0 1px rgba(255,255,255,.6);
-      position: relative; z-index: 10;
-    }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .slot-left:hover .avatar-3d-wrap { transform: scale(1.06); }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .seed { font-size: 16px; }
-    
-    /* 8 强、4 强及决赛尺寸 (超大视野强化版) */
-    .round:is([data-round-index="2"], [data-round-index="3"]) .name-zh { font-size: 30px; font-weight: 800; letter-spacing: 1px; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .score { font-size: 38px; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .slot { min-height: 116px; padding: 18px 14px; gap: 14px; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .avatar-3d-wrap { width: 84px; height: 84px; }
-    .round:is([data-round-index="2"], [data-round-index="3"]) .flag { font-size: 32px; margin-left: 2px; }
+    .round:is([data-round-index="0"], [data-round-index="1"], [data-round-index="2"]) { opacity: 0.5; }
+    .round:is([data-round-index="3"], [data-round-index="4"]) { opacity: 1; }
+    .round[data-round-index="4"] { display: block; }
+
+    .round[data-round-index="3"] .round-title { box-shadow: 0 0 20px rgba(125,211,252,.4), 0 8px 20px rgba(0,0,0,.16); border-color: rgba(125,211,252,.6); }
+    .round[data-round-index="3"] .match { border-color: rgba(125,211,252,.4); padding: 8px; margin-bottom: 12px; border-width: 2px; }
+    .round[data-round-index="3"] .avatar-3d-wrap { width: 60px; height: 60px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+    .round[data-round-index="3"] .seed { font-size: 13px; }
+    .round[data-round-index="3"] .flag { font-size: 24px; margin-left: 2px; }
+    .round[data-round-index="3"] .name-zh { font-size: 30px; font-weight: 800; }
+    .round[data-round-index="3"] .score { font-size: 38px; }
+    .round[data-round-index="3"] .slot { min-height: 116px; padding: 18px 14px; gap: 14px; }
+
+    .round[data-round-index="4"] .round-title { box-shadow: 0 0 28px rgba(212,175,55,.5), 0 10px 24px rgba(0,0,0,.2); border-color: rgba(212,175,55,.7); color: #fbbf24; }
+    .round[data-round-index="4"] .match { border-color: rgba(212,175,55,.5); padding: 10px; margin-bottom: 14px; border-width: 2.5px; }
+    .round[data-round-index="4"] .avatar-3d-wrap { width: 60px; height: 60px; box-shadow: inset 0 0 0 1px rgba(212,175,55,.2); }
+    .round[data-round-index="4"] .seed { font-size: 13px; }
+    .round[data-round-index="4"] .flag { font-size: 28px; margin-left: 2px; }
+    .round[data-round-index="4"] .name-zh { font-size: 32px; font-weight: 800; }
+    .round[data-round-index="4"] .score { font-size: 42px; }
+    .round[data-round-index="4"] .slot { min-height: 130px; padding: 20px 16px; gap: 16px; }
+    .round[data-round-index="3"] .match-sessions { padding: 12px 14px; gap: 6px; }
+    .round[data-round-index="3"] .session-item { padding: 8px 12px; font-size: 16px; }
+    .round[data-round-index="3"] .session-time { font-size: 17px; }
+    .round[data-round-index="4"] .match-sessions { padding: 12px 14px; gap: 8px; }
+    .round[data-round-index="4"] .session-item { padding: 10px 14px; font-size: 18px; }
+    .round[data-round-index="4"] .session-time { font-size: 19px; }
     .bracket-svg {
       position: absolute;
       top: 0;
@@ -173,6 +180,14 @@
     .slot.chinese-player { background: radial-gradient(circle at left, rgba(251,191,36,0.06) 0%, transparent 70%); }
     .slot.chinese-player.winner { background: linear-gradient(90deg, rgba(251,191,36,0.15) 0%, transparent 100%); border-left-color: #fbbf24; }
     .slot.placeholder { color: var(--muted); }
+    .match-sessions { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 8px 10px; border-top: 1px dashed rgba(170,180,214,.12); }
+    .session-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; font-size: 14px; border-radius: 6px; background: rgba(255,255,255,.03); }
+    .session-item.session-done { background: rgba(134,239,172,.1); border-left: 2px solid #86efac; }
+    .session-item.session-done .session-time { color: #86efac; }
+    .session-item.session-upcoming { background: rgba(125,211,252,.06); border-left: 2px solid rgba(125,211,252,.3); }
+    .session-item.session-upcoming .session-time { color: var(--accent); }
+    .session-label { color: var(--muted); font-weight: 600; }
+    .session-time { color: var(--text); font-weight: 800; font-family: 'SF Mono', 'Consolas', monospace; font-size: 15px; }
     .live-badge {
       display: inline-flex; align-items: center; justify-content: center;
       background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.85); margin-top: 16px;
@@ -253,20 +268,25 @@
   <script>
     let PROFILE_MAP = {};
 
-    const normalizePlayer = (player) => {
-      if (!player) return { en: '--', zh: '待定', flag: '', seed: null, score: null, avatar: '' };
+      const normalizePlayer = (player) => {
+      if (!player) return { en: '--', zh: '待定', zhLast: '待定', flag: '', seed: null, score: null, avatar: '' };
       const base = {
-        en: player.en || '--', zh: player.zh || '', flag: player.flag || '',
-        seed: player.seed ?? null, score: player.score ?? null, avatar: player.avatar || ''
+        en: player.en || '--', zh: player.zh || '', zhLast: player.zhLast || '',
+        flag: player.flag || '', seed: player.seed ?? null, score: player.score ?? null, avatar: player.avatar || ''
       };
       const prof = PROFILE_MAP[base.en];
       if (prof) {
         if (!base.avatar && prof.avatar) base.avatar = prof.avatar;
         if ((!base.flag || base.flag === '🏴') && prof.flag) base.flag = prof.flag;
         if (!base.zh && prof.zh) base.zh = prof.zh;
+        if (!base.zhLast && prof.zhLast) base.zhLast = prof.zhLast;
         if (base.seed === null && prof.seed) base.seed = prof.seed;
       }
       if (!base.zh) base.zh = base.en !== '--' ? '' : '待定';
+      if (!base.zhLast) {
+        if (base.zh.includes('·')) base.zhLast = base.zh.split('·').pop();
+        else base.zhLast = base.zh;
+      }
       return base;
     };
 
@@ -346,7 +366,7 @@
             const statusLabel = status === 'live' ? 'Live' : status === 'finished' ? 'Finish' : 'TBD';
             const statusClass = status === 'live' ? 'status-inline-live' : status === 'finished' ? 'status-inline-finished' : 'status-inline-pending';
             const slot = (p, playerIndex) => {
-              const tooltip = [p.zh, p.en].filter(Boolean).join(' · ');
+              const tooltip = [p.zhLast, p.en].filter(Boolean).join(' · ');
               const href = PROFILE_MAP[p.en]?.wstProfile || '';
               const DEFAULT_AVATAR = 'https://images.gc.wstservices.co.uk/fit-in/400x600/9852f230-bb73-11ee-88c0-bd1a9999a15b.png';
               const avatarSrc = p.en === '--' ? DEFAULT_AVATAR : (p.avatar || '');
@@ -354,14 +374,24 @@
               const isWinner = winner && winner.en === p.en;
               const isLoser = status === 'finished' && !isWinner && p.en !== '--';
               const isChinese = p.flag === '🇨🇳';
-              const inner = `${avatarHtml}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh ${isChinese ? 'chinese' : ''}">${p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
+              const inner = `${avatarHtml}<div class="flag">${p.flag || ''}</div><div class="names"><div class="name-zh ${isChinese ? 'chinese' : ''}">${p.zhLast || p.zh || ''}${p.seed ? `<span class="seed">(${p.seed})</span>` : ''}</div></div>`;
               const scoreWithStatus = typeof p.score === 'number'
                 ? `<div class="score">${p.score}</div>`
                 : `<div class="score">–</div>`;
               const statusNode = (playerIndex === 1 && status) ? `<span class="status-inline ${statusClass}">${statusLabel}</span>` : '';
               return `<div class="slot ${isWinner ? 'winner' : ''} ${isLoser ? 'loser' : ''} ${isChinese ? 'chinese-player' : ''} ${p.en === '--' ? 'placeholder' : ''} ${p.sourcePending ? 'source-pending' : ''}">${href && p.en !== '--' ? `<a class="slot-left" data-tooltip="${tooltip}" href="${href}" target="_blank" rel="noreferrer">${inner}</a>` : `<div class="slot-left" data-tooltip="${tooltip}">${inner}</div>`}${scoreWithStatus}${statusNode}</div>`;
             };
-            return `<div class="match ${status}" data-round="${idx}" data-match="${matchIdx}">${slot(a,0)}${slot(b,1)}</div>`;
+            const sessionsHtml = (match.sessions && (idx === 3 || idx === 4))
+              ? `<div class="match-sessions">${match.sessions.map(s => {
+                  let sClass = '';
+                  if (s.time !== '--') {
+                    const sTime = new Date('2026-' + s.time.slice(0,5) + 'T' + s.time.slice(6) + ':00');
+                    sClass = sTime <= new Date() ? 'session-done' : 'session-upcoming';
+                  }
+                  return `<span class="session-item ${sClass}"><span class="session-label">${s.label}</span><span class="session-time">${s.time}</span></span>`;
+                }).join('')}</div>`
+              : '';
+            return `<div class="match ${status}" data-round="${idx}" data-match="${matchIdx}">${slot(a,0)}${slot(b,1)}${sessionsHtml}</div>`;
           }).join('')}
         </div>`).join('');
       if (document.fonts && document.fonts.ready) {
