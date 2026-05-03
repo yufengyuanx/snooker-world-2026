@@ -41,15 +41,15 @@ try {
   console.log('\n3. 查找最新截图...');
   const files = fs.readdirSync(IMG_DIR)
     .filter(f => f.endsWith('.png'))
-    .sort()
-    .reverse();
+    .map(f => ({ name: f, mtimeMs: fs.statSync(path.join(IMG_DIR, f)).mtimeMs }))
+    .sort((a, b) => b.mtimeMs - a.mtimeMs);
   
   if (files.length === 0) {
     console.error('❌ 未找到生成的截图');
     process.exit(1);
   }
 
-  const latestImg = files[0];
+  const latestImg = files[0].name;
   const latestImgPath = path.join(IMG_DIR, latestImg);
   console.log('最新截图:', latestImgPath);
 
