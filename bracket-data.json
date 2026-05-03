@@ -6,7 +6,7 @@
     "location": "Sheffield",
     "format": "32强 → 16强 → 8强 → 4强 → 决赛",
     "note": "后续只需补比分，页面会自动根据胜负关系推进晋级树。",
-    "lastUpdated": "2026-05-03 01:19 (Asia/Shanghai)"
+    "lastUpdated": "2026-05-03 09:28 (Asia/Shanghai)"
   },
   "rounds": [
     {
@@ -719,7 +719,7 @@
               "zhLast": "艾伦",
               "flag": "🇬🇧",
               "seed": 14,
-              "score": 11
+              "score": 15
             },
             {
               "en": "Wu Yize",
@@ -727,10 +727,10 @@
               "zhLast": "吴宜泽",
               "flag": "🇨🇳",
               "seed": 10,
-              "score": 11
+              "score": 17
             }
           ],
-          "status": "live",
+          "status": "finished",
           "sessions": [
             {
               "label": "第 1 阶段（8局）",
@@ -761,6 +761,22 @@
           "id": "f-1",
           "date": "3–4 May",
           "bestOf": 35,
+          "players": [
+            {
+              "en": "Shaun Murphy",
+              "zh": "肖恩·墨菲",
+              "zhLast": "墨菲",
+              "flag": "🇬🇧",
+              "seed": 8
+            },
+            {
+              "en": "Wu Yize",
+              "zh": "吴宜泽",
+              "zhLast": "吴宜泽",
+              "flag": "🇨🇳",
+              "seed": 10
+            }
+          ],
           "sessions": [
             {
               "label": "第 1 阶段（8局）",
